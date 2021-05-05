@@ -24,7 +24,6 @@
 		2DCA1CA525AEEA4600D893C2 /* LaunchScreenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCA1CA425AEEA4600D893C2 /* LaunchScreenManager.swift */; };
 		2DDDBFA2264255DD00C7D51E /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2DDDBFA1264255DD00C7D51E /* FacebookLogin */; };
 		2DDDBFA4264255DD00C7D51E /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2DDDBFA3264255DD00C7D51E /* FacebookCore */; };
-		2DDDBFA82642825500C7D51E /* ImageSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFA72642825500C7D51E /* ImageSwapper.swift */; };
 		2DDDBFB12642D7A600C7D51E /* PublicProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFAF2642D7A600C7D51E /* PublicProductView.swift */; };
 		2DDDBFB22642D7A600C7D51E /* ImageSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFB02642D7A600C7D51E /* ImageSwapper.swift */; };
 		2DDDBFB62642D7C600C7D51E /* SearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFB42642D7C600C7D51E /* SearchFilter.swift */; };
@@ -161,7 +160,6 @@
 		2DB070EC25AED9710099AC4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DB070FB25AED9FD0099AC4E /* LauchStatic.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LauchStatic.xib; sourceTree = "<group>"; };
 		2DCA1CA425AEEA4600D893C2 /* LaunchScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenManager.swift; sourceTree = "<group>"; };
-		2DDDBFA72642825500C7D51E /* ImageSwapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSwapper.swift; sourceTree = "<group>"; };
 		2DDDBFAF2642D7A600C7D51E /* PublicProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProductView.swift; sourceTree = "<group>"; };
 		2DDDBFB02642D7A600C7D51E /* ImageSwapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSwapper.swift; sourceTree = "<group>"; };
 		2DDDBFB42642D7C600C7D51E /* SearchFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilter.swift; sourceTree = "<group>"; };
@@ -311,7 +309,6 @@
 				45514E7F263936CF006937E8 /* KeyboardHandler.swift */,
 				45514E79263936CF006937E8 /* SaveButton.swift */,
 				45514E81263936D0006937E8 /* UITextRepresentables.swift */,
-				2DDDBFA72642825500C7D51E /* ImageSwapper.swift */,
 				45E9547025F1FE2600776D8A /* Extensions.swift */,
 			);
 			path = "Core Function";
@@ -878,7 +875,6 @@
 				45514ECE263937B5006937E8 /* PublicShopView.swift in Sources */,
 				45514FCC26393BBE006937E8 /* RetailerPageShopSelectView.swift in Sources */,
 				45514FBA26393BBE006937E8 /* AddShopFlowControlView.swift in Sources */,
-				2DDDBFA82642825500C7D51E /* ImageSwapper.swift in Sources */,
 				4523E1C026301E9600241C8E /* ProductShippingFee.swift in Sources */,
 				45514E88263936D0006937E8 /* ImagePicker.swift in Sources */,
 				45514FC626393BBE006937E8 /* RetailerPageProfileView.swift in Sources */,
