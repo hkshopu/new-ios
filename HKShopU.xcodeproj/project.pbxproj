@@ -25,6 +25,11 @@
 		2DDDBFA2264255DD00C7D51E /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2DDDBFA1264255DD00C7D51E /* FacebookLogin */; };
 		2DDDBFA4264255DD00C7D51E /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2DDDBFA3264255DD00C7D51E /* FacebookCore */; };
 		2DDDBFA82642825500C7D51E /* ImageSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFA72642825500C7D51E /* ImageSwapper.swift */; };
+		2DDDBFB12642D7A600C7D51E /* PublicProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFAF2642D7A600C7D51E /* PublicProductView.swift */; };
+		2DDDBFB22642D7A600C7D51E /* ImageSwapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFB02642D7A600C7D51E /* ImageSwapper.swift */; };
+		2DDDBFB62642D7C600C7D51E /* SearchFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFB42642D7C600C7D51E /* SearchFilter.swift */; };
+		2DDDBFB72642D7C600C7D51E /* MyProductControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFB52642D7C600C7D51E /* MyProductControlView.swift */; };
+		2DDDBFBA2642D7D600C7D51E /* ToBeUpdatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDDBFB92642D7D600C7D51E /* ToBeUpdatedView.swift */; };
 		2DFBF2D025B164E900F5C80C /* ApplicationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFBF2CF25B164E900F5C80C /* ApplicationState.swift */; };
 		4501999E25E77EA900332466 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4501999D25E77EA900332466 /* IntroView.swift */; };
 		4512068825F249220092B4CC /* NewPassWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4512068725F249220092B4CC /* NewPassWord.swift */; };
@@ -157,6 +162,11 @@
 		2DB070FB25AED9FD0099AC4E /* LauchStatic.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LauchStatic.xib; sourceTree = "<group>"; };
 		2DCA1CA425AEEA4600D893C2 /* LaunchScreenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreenManager.swift; sourceTree = "<group>"; };
 		2DDDBFA72642825500C7D51E /* ImageSwapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSwapper.swift; sourceTree = "<group>"; };
+		2DDDBFAF2642D7A600C7D51E /* PublicProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicProductView.swift; sourceTree = "<group>"; };
+		2DDDBFB02642D7A600C7D51E /* ImageSwapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSwapper.swift; sourceTree = "<group>"; };
+		2DDDBFB42642D7C600C7D51E /* SearchFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchFilter.swift; sourceTree = "<group>"; };
+		2DDDBFB52642D7C600C7D51E /* MyProductControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProductControlView.swift; sourceTree = "<group>"; };
+		2DDDBFB92642D7D600C7D51E /* ToBeUpdatedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToBeUpdatedView.swift; sourceTree = "<group>"; };
 		2DFBF2CF25B164E900F5C80C /* ApplicationState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationState.swift; sourceTree = "<group>"; };
 		4501999D25E77EA900332466 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		4512068725F249220092B4CC /* NewPassWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPassWord.swift; sourceTree = "<group>"; };
@@ -335,6 +345,9 @@
 				45514F9A26393BBE006937E8 /* RetailerPage */,
 				45514EC9263937B5006937E8 /* BottomNavigatorView.swift */,
 				45514ECA263937B5006937E8 /* MainFlowControlView.swift */,
+				2DDDBFB82642D7D600C7D51E /* ToBeUpdated */,
+				2DDDBFB32642D7C600C7D51E /* MyProduct */,
+				2DDDBFAE2642D7A600C7D51E /* PublicProduct */,
 				45514ECB263937B5006937E8 /* PublicShopView.swift */,
 				45514F6A26393999006937E8 /* Fonts */,
 				45AA276A26132BDE0077F855 /* AddProduct */,
@@ -383,6 +396,35 @@
 				2DB070EC25AED9710099AC4E /* Info.plist */,
 			);
 			path = LaunchScreenTestUITests;
+			sourceTree = "<group>";
+		};
+		2DDDBFAE2642D7A600C7D51E /* PublicProduct */ = {
+			isa = PBXGroup;
+			children = (
+				2DDDBFAF2642D7A600C7D51E /* PublicProductView.swift */,
+				2DDDBFB02642D7A600C7D51E /* ImageSwapper.swift */,
+			);
+			name = PublicProduct;
+			path = ../../../../../Desktop/HKShopU_ShopFlow/HKShopU_ShopFlow/PublicProduct;
+			sourceTree = "<group>";
+		};
+		2DDDBFB32642D7C600C7D51E /* MyProduct */ = {
+			isa = PBXGroup;
+			children = (
+				2DDDBFB42642D7C600C7D51E /* SearchFilter.swift */,
+				2DDDBFB52642D7C600C7D51E /* MyProductControlView.swift */,
+			);
+			name = MyProduct;
+			path = ../../../../../Desktop/HKShopU_ShopFlow/HKShopU_ShopFlow/MyProduct;
+			sourceTree = "<group>";
+		};
+		2DDDBFB82642D7D600C7D51E /* ToBeUpdated */ = {
+			isa = PBXGroup;
+			children = (
+				2DDDBFB92642D7D600C7D51E /* ToBeUpdatedView.swift */,
+			);
+			name = ToBeUpdated;
+			path = ../../../../../Desktop/HKShopU_ShopFlow/HKShopU_ShopFlow/ToBeUpdated;
 			sourceTree = "<group>";
 		};
 		2DFBF2CE25B164D000F5C80C /* ApplicationData */ = {
@@ -811,6 +853,7 @@
 				45268FBA2600C480000F4DA8 /* SupportView.swift in Sources */,
 				45268FCC2600C503000F4DA8 /* CustomerPageInfoView.swift in Sources */,
 				45514FC326393BBE006937E8 /* RetailerPageFlowControlView.swift in Sources */,
+				2DDDBFBA2642D7D600C7D51E /* ToBeUpdatedView.swift in Sources */,
 				4501999E25E77EA900332466 /* IntroView.swift in Sources */,
 				45514FC726393BBE006937E8 /* RetailerPageView.swift in Sources */,
 				45514E87263936D0006937E8 /* CustomTextField.swift in Sources */,
@@ -826,8 +869,11 @@
 				45514F652639396C006937E8 /* UserData.swift in Sources */,
 				45268F3825F60F0B000F4DA8 /* EmailValidationView.swift in Sources */,
 				45514FCA26393BBE006937E8 /* ServiceView.swift in Sources */,
+				2DDDBFB62642D7C600C7D51E /* SearchFilter.swift in Sources */,
 				458BE10025F0D9E3009209BE /* UserDataView.swift in Sources */,
 				45514FC826393BBE006937E8 /* RetailerPageInfoView.swift in Sources */,
+				2DDDBFB22642D7A600C7D51E /* ImageSwapper.swift in Sources */,
+				2DDDBFB12642D7A600C7D51E /* PublicProductView.swift in Sources */,
 				45268F962600C3F7000F4DA8 /* CostomerPageTopView.swift in Sources */,
 				45514ECE263937B5006937E8 /* PublicShopView.swift in Sources */,
 				45514FCC26393BBE006937E8 /* RetailerPageShopSelectView.swift in Sources */,
@@ -850,6 +896,7 @@
 				2DB070C925AED96F0099AC4E /* LaunchScreenTestApp.swift in Sources */,
 				45268FBF2600C4CC000F4DA8 /* CustomerPageProfileView.swift in Sources */,
 				4523E1C226301E9600241C8E /* ProductSpecQP.swift in Sources */,
+				2DDDBFB72642D7C600C7D51E /* MyProductControlView.swift in Sources */,
 				45268F6325F88BB9000F4DA8 /* SignAddressView.swift in Sources */,
 				45E9547125F1FE2600776D8A /* Extensions.swift in Sources */,
 				45514FBC26393BBE006937E8 /* ShopDescriptionEditView.swift in Sources */,
