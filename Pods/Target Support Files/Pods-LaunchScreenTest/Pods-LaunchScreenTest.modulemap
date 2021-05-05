@@ -1,0 +1,6 @@
+framework module Pods_LaunchScreenTest {
+  umbrella header "Pods-LaunchScreenTest-umbrella.h"
+
+  export *
+  module * { export * }
+}
