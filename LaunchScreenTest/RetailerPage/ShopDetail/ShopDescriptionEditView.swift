@@ -10,7 +10,8 @@ import SwiftUI
 struct ShopDescriptionEditView: View {
     
     @EnvironmentObject var language : SystemLanguage
-    
+    @EnvironmentObject var shopData : ShopData
+    @EnvironmentObject var internetTask : InternetTask
     @State var bannerIMG: UIImage = UIImage()
     @State var scaledIMG: UIImage = UIImage()
     //@State var isPickedIMG = false
@@ -73,13 +74,14 @@ struct ShopDescriptionEditView: View {
                         HStack(spacing: 8){
                             
                             // TODO: Fetch Shop Icon From Shop Data
-                            Image(systemName: "person.fill")
+                            //Image(systemName: "person.fill")
+                            Image(uiImage: self.shopData.currentShop.shopIMGs.shopIcon)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 32, height: 32, alignment: .center)
                                 .foregroundColor(Color(hex:0xC4C4C4))
                                 .clipShape(Circle())
-                            Text("somthing")
+                            Text(shopData.currentShop.detail!.shop_title)
                                 .font(.custom("SF-PRO-Text-Semibold", size: 18))
                             //Text("somthing")
                                 //.font(.custom("SFNS", size: 18))
@@ -97,6 +99,10 @@ struct ShopDescriptionEditView: View {
                             customTextEditor(text: self.$description, isEditing: self.$isDescriptionEditing, completionHandler: completionHandler, textView: textView )
                                 .frame(height: TVheight)
                                 
+                        }.onAppear(){
+                            if !shopData.currentShop.detail!.shop_description.isEmpty{
+                                description = shopData.currentShop.detail!.shop_description
+                            }
                         }
                         
                         .onPreferenceChange(ViewHeightKey.self, perform: { value in
@@ -129,7 +135,15 @@ struct ShopDescriptionEditView: View {
                         }
                         
                         SaveButton {
-                            do{}
+                            do{
+                                //if let id = userStatus.id {
+                                    if let shopid = shopData.currentShopID {
+                                        let apireturn = makeAPICall(internetTask: internetTask, url: "\(internetTask.domain)shop/\(shopid)/update/", method: "POST", parameters: "shop_description=\(description)")
+                                        print("shopid = ", shopid," shop_description = ",description)
+                                    print (apireturn.status)
+                                    }
+                                //}
+                            }
                         }
                     }
                     .padding(40)

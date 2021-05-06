@@ -19,6 +19,10 @@ enum FullScreenCoverControl{
     case category
     case addShop
     case shopDescription
+    case myRating
+    case myProductControl
+    case myFocus
+    case myIncome
 }
 struct RetailerPageView: View {
     @EnvironmentObject var internetTask:InternetTask
@@ -61,10 +65,9 @@ struct RetailerPageView: View {
                 ScrollView{
                     VStack(spacing: 20){
                         RetailerPageProfileView( willShowFullScreenCover: self.$willShowFullScreenCover, fcControl: self.$fcControl)
-                        RetailerPageInfoView()
+                        RetailerPageInfoView(willShowFullScreenCover: self.$willShowFullScreenCover, fcControl: self.$fcControl)
                             .shadow(color: Color(hex: 0x1DBCCF, alpha: 0.1), radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: 4.0)
-                        RetailerPageMainView(haveProduct: self.$haveProduct, retailerFlow: self.$flow, products: self
-                                                .$products, willShowFullScreenCover: self.$willShowFullScreenCover, fcControl: self.$fcControl)
+                        RetailerPageMainView(haveProduct: self.$haveProduct, retailerFlow: self.$flow, products: self.$products, willShowFullScreenCover: self.$willShowFullScreenCover, fcControl: self.$fcControl)
                     }.padding(.bottom, 20)
                 }
                 
@@ -194,6 +197,15 @@ struct FullScreenView: View {
             case .shopDescription:
                 ShopDescriptionEditView(dismiss: self.$willShowFullScreenCover)
                 
+            case .myRating:
+                ToBeUpdatedView(IMG: "評價",dismiss: self.$willShowFullScreenCover)
+            case .myProductControl:
+                MyProductControlView(isShowMyProduct: self.$willShowFullScreenCover)
+            //ToBeUpdatedView(IMG: "")
+            case .myFocus:
+                ToBeUpdatedView(IMG: "關注",dismiss: self.$willShowFullScreenCover)
+            case .myIncome:
+                ToBeUpdatedView(IMG: "進帳",dismiss: self.$willShowFullScreenCover)
             }
             
         }

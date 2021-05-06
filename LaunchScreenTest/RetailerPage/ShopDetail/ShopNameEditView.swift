@@ -10,9 +10,10 @@ import SwiftUI
 struct ShopNameEditView: View {
     @EnvironmentObject var language: SystemLanguage
     @EnvironmentObject var internetTask: InternetTask
+    @EnvironmentObject var shopData: ShopData
     @StateObject var keyboardHandler = KeyboardHandler()
     @Binding var isShowEditView:Bool
-    
+    //@Binding var shopData:ShopData
     @State var text = ""
     @State var isShowPopup = false
     @State var isEditing = false
@@ -72,10 +73,14 @@ struct ShopNameEditView: View {
             .animation(.default)
             
             if isShowPopup {
-                Popup(isShowPopupView: self.$isShowPopup, isShowShopNameEditView: self.$isShowEditView, text: text)
+//                Popup(isShowPopupView: self.$isShowPopup, isShowShopNameEditView: self.$isShowEditView,shopdata: $shopData ,text: text)
+                Popup(isShowPopupView: self.$isShowPopup, isShowShopNameEditView: self.$isShowEditView,text: text)
                     .animation(Animation.easeInOut(duration: 3.0))
                     .transition(.opacity)
             }
+        }.onAppear(){
+            print(shopData.currentShopID,shopData.currentShop.detail!.shop_title)
+            textField.text = shopData.currentShop.detail!.shop_title
         }
         .ignoresSafeArea(.all)
         .onTapGesture {
@@ -105,9 +110,15 @@ struct ShopNameEditView: View {
 }
 private struct Popup: View{
     @EnvironmentObject var language: SystemLanguage
+    @EnvironmentObject var internetTask:InternetTask
+    @EnvironmentObject var userStatus:User
+    @EnvironmentObject var shopdata:ShopData
     @Binding var isShowPopupView: Bool
     @Binding var isShowShopNameEditView: Bool
+    @State var isAlertOn = false
+    @State var AlertText = ""
     let text: String
+    
     var body: some View{
         let  context = language.content
         ZStack{
@@ -139,12 +150,35 @@ private struct Popup: View{
                             }
                         }
                         Button(action: {
+                            isAlertOn = false
                             withAnimation{
                                 isShowPopupView = false
                                 isShowShopNameEditView = false
                             }
                             DispatchQueue.main.async {
+                                
                                 //TODO: call update shop name api here
+                                if let id = userStatus.id {
+                                    if let shopid = shopdata.currentShopID {
+                                        let apireturn = makeAPICall(internetTask: internetTask, url: "\(internetTask.domain)shop/\(shopid)/update/", method: "POST", parameters: "shop_title=\(text)")
+                                        print("shopid = ", shopid)
+                                    print (apireturn.status)
+                                        let status = apireturn.status
+                                            switch status {
+                                            case 0:
+                                                isAlertOn = false
+                                            case -43:
+                                                isAlertOn = true
+                                                AlertText = "過去 30 天內已更改過商店名稱!"
+                                            case -44:
+                                                isAlertOn = true
+                                                AlertText = "此商店名稱已存在，請選擇其他名稱!"
+                                            default:
+                                                isAlertOn = true
+                                            }
+                                        
+                                    }
+                                }
                             }
                         }){
                             ZStack{
@@ -155,6 +189,8 @@ private struct Popup: View{
                                     .font(.custom("SFNS", size: 18))
                                     .foregroundColor(.white)
                             }
+                        }.alert(isPresented: $isAlertOn)  { () -> Alert in
+                            Alert(title: Text("錯誤"), message: Text("必填資訊不能為空或0"))
                         }
                     }
                     .frame(height:62)
@@ -171,6 +207,7 @@ struct ShopNameEditView_Previews: PreviewProvider {
         ShopNameEditView(isShowEditView: .constant(true))
             .environmentObject(SystemLanguage())
             .environmentObject(InternetTask())
+            .environmentObject(ShopData())
     }
 }
 

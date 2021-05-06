@@ -99,7 +99,7 @@ private struct Element:View{
                         Text(shop.name)
                             .font(.custom("SFNS", size: 18))
                             .fontWeight(.semibold)
-                        StarView(rating: shop.rating)
+                        StarView(rating: shop.rating,willShowFullScreenCover: .constant(false),fcControl: .constant(.myRating))
                     }
                     Spacer()
                         

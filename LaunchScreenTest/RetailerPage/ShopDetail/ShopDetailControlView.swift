@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ShopDetailControlView: View {
-    
     @Binding var isShowDetailView :Bool
+    //@Binding var shopData: ShopData
     @State var isShowShopNameEditView = false
     @State var isShowDescriptionView = false
     @State var isShowNumberEditView = false

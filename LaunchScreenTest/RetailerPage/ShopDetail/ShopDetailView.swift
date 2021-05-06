@@ -49,7 +49,11 @@ struct ShopDetailView: View {
                         }
                         
                         if let detail = shopData.currentShop.detail{
-                            Element(title: "電話號碼", navigation: self.$isShowNumberEditView , Content: detail.shop_address[0].number)
+                            if !(shopData.currentShop.detail?.shop_address.isEmpty)! {
+                                Element(title: "電話號碼", navigation: self.$isShowNumberEditView , Content: detail.shop_address[0].number)}
+                            else{
+                                Element(title: "電話號碼", navigation: self.$isShowNumberEditView , Content: "")
+                            }
                         }else{
                             Element(title: "電話號碼", navigation: self.$isShowNumberEditView , Content: "")
                         }
@@ -61,6 +65,7 @@ struct ShopDetailView: View {
                 Spacer()
                 Button(action: {
                     //TODO: call save detail api
+                    
                 }){
                     ZStack {
                         Capsule()

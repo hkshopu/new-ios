@@ -87,7 +87,7 @@ struct RetailerPageProfileView: View {
                     }
 
                 }
-                StarView(rating: shopData.currentShop.detail?.rating ?? 0) 
+                StarView(rating: shopData.currentShop.detail?.rating ?? 0,willShowFullScreenCover: self.$willShowFullScreenCover, fcControl: self.$fcControl)
 
 //                ImageEditingViewController(saveTriggered: $saveTriggered, renderedImage: self.$renderedImage)
 //                    .frame(height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
@@ -147,7 +147,8 @@ struct RetailerPageProfileView_Previews: PreviewProvider {
 struct StarView: View {
     
     let rating: Double
-    
+    @Binding var willShowFullScreenCover :Bool
+    @Binding var fcControl: FullScreenCoverControl
     var body: some View {
         HStack(spacing: 3){
             let intRate = Int(rating)
@@ -170,6 +171,12 @@ struct StarView: View {
             }
             
             Text(String(rating))
+        }.onTapGesture {
+            let serialQueue: DispatchQueue = DispatchQueue(label: "serialQueue")
+            serialQueue.sync {
+                fcControl = .myRating
+            }
+            willShowFullScreenCover = true
         }
     }
 }
