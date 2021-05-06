@@ -10,6 +10,7 @@ import SwiftUI
 struct ShopDetailPhoneView: View {
     @EnvironmentObject var language: SystemLanguage
     @EnvironmentObject var internetTask: InternetTask
+    @EnvironmentObject var shopData: ShopData
     @StateObject var keyboardHandler = KeyboardHandler()
     @Binding var isShowEditView:Bool
     
@@ -63,6 +64,13 @@ struct ShopDetailPhoneView: View {
                 
                 SaveButton(buttonAction: {
                     text = textField.text!
+                    //if let id = userStatus.id {
+                        if let shopid = shopData.currentShopID {
+                            let apireturn = makeAPICall(internetTask: internetTask, url: "\(internetTask.domain)shop/\(shopid)/update/", method: "POST", parameters: "address_phone=\(text)")
+                            print("shopid = ", shopid,"address_phone = ",text)
+                        print (apireturn.status)
+                        }
+                    //}
                     
                 }).disabled(text.isEmpty)
                 

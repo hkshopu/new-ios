@@ -46,7 +46,7 @@ struct ShopDescriptionEditView: View {
                     
                 }
                 else{
-                    Image(uiImage: bannerIMG)
+                    Image(uiImage: self.shopData.currentShop.shopIMGs.shopDescriptionIMG!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .onTapGesture {
