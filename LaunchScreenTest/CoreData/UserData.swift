@@ -153,6 +153,7 @@ class User: ObservableObject{
     
     @Published var isLoggedIn: Bool
     @Published var id :Int?
+    @Published var password: String?
     @Published var profile :ProfileData?
     @Published var ShopList :ShopList?
     

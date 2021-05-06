@@ -23,6 +23,7 @@ struct customTextField: UIViewRepresentable{
     var font: UIFont?
     
     func makeUIView(context: Context) -> UITextField {
+        tf.text = text
         tf.borderStyle = .none
         tf.autocorrectionType = .no
         //tf.becomeFirstResponder()

@@ -17,7 +17,7 @@ struct ShopDetailPhoneView: View {
     @State var text = ""
     @State var isShowPhone = false
     @State var isEditing = false
-    
+    @State var NationNum = "+852"
     let textField = UITextField()
     var body: some View {
         let context = language.content
@@ -32,13 +32,17 @@ struct ShopDetailPhoneView: View {
                             .foregroundColor(.white)
                             .shadow(color: Color(hex: 0x1DBCCF, alpha: 0.1), radius: 10, x: 0.0, y: 4)
                         
-                        ZStack(alignment:.leading){
+                        //ZStack(alignment:.leading){
+                        HStack{
+                            TextField("", text: $NationNum).disabled(true).frame(width:UIScreen.screenWidth*0.3)
+                            ZStack{
                             if !textField.hasText{
                                 Text(context["ShopDetailPhoneView_2"]!)
                                     .foregroundColor(Color(hex: 0x8E8E93))
                                     .font(.custom("SFNS", size: 14))
                             }
                             NumericTextField( isEditing: self.$isEditing, text: self.$text, completionHandler: completionHandler, textField: textField)
+                            }
                         }.padding(.horizontal)
                     }
                     .frame(width: 0.9*UIScreen.screenWidth, height: 46)
@@ -66,9 +70,14 @@ struct ShopDetailPhoneView: View {
                     text = textField.text!
                     //if let id = userStatus.id {
                         if let shopid = shopData.currentShopID {
-                            let apireturn = makeAPICall(internetTask: internetTask, url: "\(internetTask.domain)shop/\(shopid)/update/", method: "POST", parameters: "address_phone=\(text)")
+                            let apireturn = makeAPICall(internetTask: internetTask, url: "\(internetTask.domain)shop/\(shopid)/update/", method: "POST", parameters: "address_phone=\(text)&address_is_phone_show\(isShowPhone)")
                             print("shopid = ", shopid,"address_phone = ",text)
-                        print (apireturn.status)
+                            print (apireturn.status)
+                            if apireturn.status == 0{
+                            isShowEditView = false
+                            }else{
+                                
+                            }
                         }
                     //}
                     

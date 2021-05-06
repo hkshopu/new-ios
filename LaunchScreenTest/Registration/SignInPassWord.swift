@@ -123,7 +123,11 @@ struct SignInPassWord: View {
                                 let apiReturn = makeloginAPICall(internetTask: internetTask,url: "https://hkshopu-20700.df.r.appspot.com/user/loginProcess/", method: "POST", parameters:"email=\(email)&password=\(password)")
                                 loginstatus = optioanlInt(int: apiReturn.status)
                                 userStatus.id = optioanlInt(int: apiReturn.user_id)
-                                
+                                userStatus.password = password
+                                if apiReturn.status == 0 {
+                                    print("登入成功")
+                                    print(userStatus.password )
+                                }
                             }
                             
                         }){
@@ -136,6 +140,7 @@ struct SignInPassWord: View {
                             loginstatus = apiReturn.status
                             ifDisable = true
                             step = 6
+
                         }){
                             Text("忘記密碼？")
                                 .foregroundColor(Color(hex: 0x1DBCCF, alpha: 1.0))

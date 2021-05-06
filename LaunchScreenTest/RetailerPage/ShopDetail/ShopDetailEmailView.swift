@@ -27,6 +27,7 @@ struct ShopDetailMailControlView: View{
 struct ShopDetailMailCheckView: View {
     @EnvironmentObject var language: SystemLanguage
     @EnvironmentObject var internetTask: InternetTask
+    @EnvironmentObject var userStatus:User
     @StateObject var keyboardHandler = KeyboardHandler()
     @Binding var isShowEditView:Bool
     @Binding fileprivate var flow: Flow
@@ -36,7 +37,7 @@ struct ShopDetailMailCheckView: View {
     @State var isEditing = false
     @State var isSecure = true
     @State var isShowForgetPasswordView = false
-    
+    @State var AlertText = ""
     let textField = UITextField()
     var body: some View {
         let context = language.content
@@ -81,10 +82,11 @@ struct ShopDetailMailCheckView: View {
                             .foregroundColor(.white)
                             .shadow(color: Color(hex: 0x1DBCCF, alpha: 0.1), radius: 10, x: 0.0, y: 4)
                         HStack{
-                            Toggle(isOn: self.$isShowPhone, label: {
-                                Text(context["ShopDetailPhoneView_3"]!)
-                                    .font(.custom("SFNS", size: 14))
-                            })
+                            Text(AlertText)
+//                            Toggle(isOn: self.$isShowPhone, label: {
+//                                Text(context["ShopDetailPhoneView_3"]!)
+//                                    .font(.custom("SFNS", size: 14))
+//                            })
                         }.padding(.horizontal)
                     }
                     .frame(width: 0.9*UIScreen.screenWidth, height: 55)
@@ -98,7 +100,11 @@ struct ShopDetailMailCheckView: View {
                     ContinueButton(buttonAction: {
                         text = textField.text!
                         //TODO: Call api here
-                        flow = .edit
+                        if text == userStatus.password{
+                            flow = .edit
+                        }else{
+                            AlertText = "Password Error"
+                        }
                     }).disabled(text.isEmpty)
                     Button(action: {
                         
@@ -143,12 +149,13 @@ struct ShopDetailMailEditView: View {
     @EnvironmentObject var language: SystemLanguage
     @EnvironmentObject var internetTask: InternetTask
     @StateObject var keyboardHandler = KeyboardHandler()
+    @EnvironmentObject var shopData: ShopData
     @Binding var isShowEditView:Bool
     
     @State var text = ""
-    @State var isShowPhone = false
+    @State var isShowEmail = false
     @State var isEditing = false
-    
+    @State var isShowEmaion = "N"
     let textField = UITextField()
     var body: some View {
         let context = language.content
@@ -180,7 +187,7 @@ struct ShopDetailMailEditView: View {
                             .foregroundColor(.white)
                             .shadow(color: Color(hex: 0x1DBCCF, alpha: 0.1), radius: 10, x: 0.0, y: 4)
                         HStack{
-                            Toggle(isOn: self.$isShowPhone, label: {
+                            Toggle(isOn: self.$isShowEmail, label: {
                                 Text(context["ShopDetailMailEditView_3"]!)
                                     .font(.custom("SFNS", size: 14))
                             })
@@ -195,7 +202,22 @@ struct ShopDetailMailEditView: View {
                 
                 SaveButton(buttonAction: {
                     text = textField.text!
-                    
+                    print(self.text,self.isShowEmail)
+                    if let shopid = shopData.currentShopID {
+                        if isShowEmail {
+                            isShowEmaion = "Y"
+                        }else{
+                            isShowEmaion = "N"
+                        }
+                        let apireturn = makeAPICall(internetTask: internetTask, url: "\(internetTask.domain)shop/\(shopid)/update/", method: "POST", parameters: "shop_email=\(self.text)&email_on=\(isShowEmaion)")
+                        print("shopid = ", shopid,"address_phone = ",text)
+                        print (apireturn.status)
+                        if apireturn.status == 0{
+                        isShowEditView = false
+                        }else{
+                            
+                        }
+                    }
                 }).disabled(text.isEmpty)
                 
             }.padding(.vertical, 40)

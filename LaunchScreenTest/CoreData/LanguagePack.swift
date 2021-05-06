@@ -44,7 +44,7 @@ struct LanguagePack{
         "ShopDetailPhoneView_2" : "請輸入手機電話號碼",
         "ShopDetailPhoneView_3" : "顯示在店鋪簡介",
         "ShopDetailMailCheckView_1" : "Email",
-        "ShopDetailMailCheckView_2" : "為了保護你的帳戶安全。請再次輸入密碼已進行下一步",
+        "ShopDetailMailCheckView_2" : "為了保護你的帳戶安全。請再次輸入密碼以進行下一步",
         "ShopDetailMailCheckView_3" : "現在的密碼",
         "ShopDetailMailEditView_1" : "新增Email",
         "ShopDetailMailEditView_2" : "輸入電子郵件",
